@@ -3,6 +3,8 @@ Ping, Jitter, Wifi-Strength Tracker  (output: CSV-File)
 
 ----------
 
+While creating the project I made a typo and stayed with it ;-)
+
 ![Form Application][form]
 
 ![Console Application][console]
@@ -10,8 +12,7 @@ Ping, Jitter, Wifi-Strength Tracker  (output: CSV-File)
 Licence
 -------
 
-[GNU GENERAL PUBLIC LICENSE V2](license)
+GNU GENERAL PUBLIC LICENSE V2
 
- [license]: ../blob/master/LICENSE
  [form]: https://raw.githubusercontent.com/jwillmer/PintChecker/master/form-preview.png
  [console]: https://raw.githubusercontent.com/jwillmer/PintChecker/master/console-preview.png
