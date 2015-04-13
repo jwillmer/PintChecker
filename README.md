@@ -3,11 +3,15 @@ Ping, Jitter, Wifi-Strength Tracker  (output: CSV-File)
 
 ----------
 
+![Form Application][form]
 
+![Console Application][console]
 
 Licence
 -------
 
-[GNU GENERAL PUBLIC LICENSE V2](3)
+[GNU GENERAL PUBLIC LICENSE V2](license)
 
- [3]: https://raw.githubusercontent.com/jwillmer/PintChecker/master/LICENSE
+ [license]: ../blob/master/LICENSE
+ [form]: https://raw.githubusercontent.com/jwillmer/PintChecker/master/form-preview.png
+ [console]: https://raw.githubusercontent.com/jwillmer/PintChecker/master/console-preview.png
