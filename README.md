@@ -2,8 +2,9 @@
 Ping, Jitter, Wifi-Strength Tracker  (output: CSV-File)
 
 ----------
+This tool can help you gather information’s about you internet connection. You can track your ping, jitter and data loss over time as well as the current Wi-Fi connection quality (strength). All date will be saved in a VSC file that you can later use to visualize you data and find fluctuations.
 
-_While creating the project I made a typo and stayed with it ;-)_
+_FYI: While creating the project I made a typo and stayed with it ;-)_
 
 Screenshots
 -------
