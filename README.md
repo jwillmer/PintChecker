@@ -6,8 +6,11 @@ _FYI: While creating the project I made a typo and stayed with it ;-)_
 
 Screenshots
 -------
+UI version
 
 ![Form Application][form]
+
+Console application
 
 ![Console Application][console]
 
