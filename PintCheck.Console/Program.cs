@@ -14,6 +14,7 @@ namespace PintCheck.ConsoleApp
         private static readonly ArgumentOptions Arguments = new ArgumentOptions();
         private static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         private static FileHandler _fileHandler;
+        private static WifiHandler _wifiHandler = new WifiHandler();
 
         static void Main(string[] args)
         {
@@ -97,7 +98,7 @@ namespace PintCheck.ConsoleApp
 
             if (Arguments.Wifi)
             {
-                data.WifiData = WifiData.GetWifiData();
+                data.WifiData = _wifiHandler.GetWifiData();
             }
 
             return data;

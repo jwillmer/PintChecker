@@ -45,8 +45,9 @@ namespace PintCheck.Library
         {
             get
             {
-                var roundtripTimes =
-                    PingReplys.Where(_ => _.Status == IPStatus.Success).Select(_ => _.RoundtripTime).ToList();
+                var roundtripTimes = PingReplys.Where(_ => _.Status == IPStatus.Success).Select(_ => _.RoundtripTime).ToList();
+                if (!roundtripTimes.Any()) return 0;
+
                 var minRoundTrip = roundtripTimes.Min(_ => _);
                 var maxRoundTrip = roundtripTimes.Max(_ => _);
 

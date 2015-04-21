@@ -16,6 +16,7 @@ namespace PintCheck.FormApp
         private static readonly ArgumentOptions Arguments = new ArgumentOptions();
         private readonly Timer _timer = new Timer();
         private static FileHandler _fileHandler;
+        private static WifiHandler _wifiHandler = new WifiHandler();
 
         public StartupForm()
         {
@@ -137,7 +138,7 @@ namespace PintCheck.FormApp
 
             if (Arguments.WiFi)
             {
-                data.WifiData = WifiData.GetWifiData();
+                data.WifiData = _wifiHandler.GetWifiData();
             }
 
             return data;
