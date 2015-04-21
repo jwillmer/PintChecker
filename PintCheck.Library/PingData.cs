@@ -37,7 +37,7 @@ namespace PintCheck.Library
                 var successors = PingReplys.Where(_ => _.Status == IPStatus.Success).ToList();
                 var roundTripTimeSum = successors.Sum(_ => _.RoundtripTime);
 
-                return roundTripTimeSum / successors.Count();
+                return successors.Any() ? roundTripTimeSum / successors.Count() : 0;
             }
         }
 
@@ -71,7 +71,7 @@ namespace PintCheck.Library
                 var successors = PingReplys.Where(_ => _.Status == IPStatus.Success).ToList();
                 var corruptionCount = successors.Count(_ => Encoding.ASCII.GetString(_.Buffer) != DataString);
 
-                return corruptionCount / successors.Count;
+                return successors.Any() ? corruptionCount / successors.Count : 0;
             }
         }
 

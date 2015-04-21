@@ -13,11 +13,13 @@ namespace PintCheck.ConsoleApp
         private static int _printedLines = 0;
         private static readonly ArgumentOptions Arguments = new ArgumentOptions();
         private static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private static FileHandler _fileHandler;
 
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments(args, Arguments);
 
+            _fileHandler = new FileHandler(Arguments.File);
             Timer timer = new Timer();
             timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             timer.Interval = Arguments.Interval * 1000;
@@ -67,7 +69,7 @@ namespace PintCheck.ConsoleApp
                 list.Add(GetData(url));
             }
 
-            FileHandler.WriteToFile(list.Cast<ICsv>().ToList(), Arguments.File);
+            var writeSuccess = _fileHandler.Write(list.Cast<ICsv>().ToList());
 
             foreach (var data in list)
             {
@@ -78,6 +80,11 @@ namespace PintCheck.ConsoleApp
                     data.PingData.DataLoss * 100,
                     data.PingData.DataCorruption * 100);
                 PrintLine(state);
+            }
+
+            if (!writeSuccess)
+            {
+                PrintLine(">> Output file can not be saved! (already opened?)");
             }
         }
 

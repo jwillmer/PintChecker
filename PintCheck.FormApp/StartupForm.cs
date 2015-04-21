@@ -15,6 +15,7 @@ namespace PintCheck.FormApp
         bool _isRunning = false;
         private static readonly ArgumentOptions Arguments = new ArgumentOptions();
         private readonly Timer _timer = new Timer();
+        private static FileHandler _fileHandler;
 
         public StartupForm()
         {
@@ -37,6 +38,7 @@ namespace PintCheck.FormApp
             else // start
             {
                 SetArguments();
+                _fileHandler = new FileHandler(Arguments.File);
                 _timer.Interval = Arguments.Interval * 1000;
                 _timer.Enabled = true;
             }
@@ -109,7 +111,7 @@ namespace PintCheck.FormApp
                 list.Add(GetData(url));
             }
 
-            FileHandler.WriteToFile(list.Cast<ICsv>().ToList(), Arguments.File);
+            var writeSuccess = _fileHandler.Write(list.Cast<ICsv>().ToList());
 
             var first = list.First();
             var state = string.Format("{0} - Average: {1}ms; Jitter: {2}ms; Loss: {3}%; Corruption: {4}%",
@@ -119,6 +121,11 @@ namespace PintCheck.FormApp
                             first.PingData.DataLoss * 100,
                             first.PingData.DataCorruption * 100);
             SetStateText(state);
+
+            if (!writeSuccess)
+            {
+                SetStateText(">> Output file can not be saved! (already opened?)");
+            }
         }
 
         private PintCheckData GetData(Uri url)
